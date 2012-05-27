@@ -51,6 +51,8 @@ alias msv="mediastreamvalidator"
 alias mfs="mediafilesegmenter"
 alias vpc="variantplaylistcreator"
 
+alias com="gcc-4.2 -Wall "
+
 # projects
 
 alias sand="cd ~/ruby/rails/sandbox/"

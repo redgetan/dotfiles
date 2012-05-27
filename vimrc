@@ -468,8 +468,8 @@ set showmode
 
 " compile and run c program
 
-map <F5> :w<CR> :!gcc-4.2 -Wall -o %< % && ./%< <CR>
+map <F5> :w<CR> :!gcc-4.2 -Wall -o %<.o % && ./%<.o <CR>
 
 " compile and run valgrind on program
 
-map <leader>v :w<CR> :!gcc-4.2 -Wall -o %< % && valgrind ./%<<CR>
+map <leader>v :w<CR> :!gcc-4.2 -Wall -o %<.o % && valgrind ./%<.o<CR>
