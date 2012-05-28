@@ -52,6 +52,7 @@ alias mfs="mediafilesegmenter"
 alias vpc="variantplaylistcreator"
 
 alias com="gcc-4.2 -Wall "
+alias vl="valgrind --leak-check=yes"
 
 # projects
 
