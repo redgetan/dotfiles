@@ -1,0 +1,40 @@
+# mostly copied from https://github.com/jamesnvc/dotfiles/blob/master/screenrc
+#
+#
+# suppress screen's startup message
+startup_message off
+# Allow altscreen for vim usage in screen
+altscreen on
+
+# an alternative hardstatus to display a bar at the bottom listing the
+# windownames and highlighting the current windowname in blue.
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %Y-%m-%d %{W}%c %{g}]'
+#hardstatus alwayslastline "%{.wk}%-w%{.kW}%n %t%{-}%+w %=%{..k} %H %{..k} %m/%d %C%a "
+
+# '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %m/%d %c ]%{W}'
+
+# execute .bash_profile on startup
+shell -$SHELL
+
+# no flow control, e.g. ^S and ^Q
+defflow off
+
+# don't tell me when bells happen in other windows
+vbell off
+bell_msg ""
+
+# don't pause for each screen message
+msgminwait 0
+
+# bigger scroll size
+defscrollback 32768
+
+# make search case-insensitive
+ignorecase on
+
+# startup screens
+
+screen -t irc 1 irssi
+screen -t top 2 top
+select 1
