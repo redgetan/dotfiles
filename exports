@@ -8,7 +8,7 @@ export HISTFILESIZE=50000
 export HISTSIZE=50000
 export HISTIGNORE="&:ls:[bf]g:exit"
 
-export EDITOR="/usr/local/bin/mvim"
+export EDITOR="vim"
 export NODE_PATH="/usr/local/lib/node"
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
 
