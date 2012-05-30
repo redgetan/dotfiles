@@ -468,8 +468,8 @@ set showmode
 
 " compile and run c program
 
-map <F5> :w<CR> :!gcc-4.2 -Wall -g -o %<.o % && ./%<.o <CR>
+map <F5> :w<CR> :!gcc -Wall -g -o %<.o % && ./%<.o <CR>
 
 " compile and run valgrind on program
 
-map <leader>v :w<CR> :!gcc-4.2 -Wall -g -o %<.o % && valgrind --leak-check=full --track-origins=yes ./%<.o<CR>
+map <leader>v :w<CR> :!gcc -Wall -g -o %<.o % && valgrind --leak-check=full --track-origins=yes ./%<.o<CR>

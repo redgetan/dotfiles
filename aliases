@@ -51,7 +51,7 @@ alias msv="mediastreamvalidator"
 alias mfs="mediafilesegmenter"
 alias vpc="variantplaylistcreator"
 
-alias com="gcc-4.2 -Wall "
+alias com="gcc -Wall -g"
 alias vl="valgrind --leak-check=full --track-origins=yes"
 
 # projects
