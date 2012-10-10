@@ -35,6 +35,7 @@ alias gsp='git stash pop'
 alias gss='git stash save'
 alias gsa='git stash apply'
 alias gsl='git stash list'
+alias glf="git log --decorate --stat --graph --pretty=format:'%C(yellow)%h%Creset (%ar - %Cred%an%Creset), %s%n'"
 
 # svn
 

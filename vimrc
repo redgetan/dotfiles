@@ -258,10 +258,10 @@ else
     "set railscasts colorscheme when running vim in gnome terminal
     if $COLORTERM == 'gnome-terminal'
         set term=xterm-256color
-        colorscheme railscasts_best
+        colorscheme default
     else
         set t_Co=256
-        colorscheme railscasts_best
+        colorscheme default
     endif
 endif
 
@@ -473,3 +473,8 @@ map <F5> :w<CR> :!gcc -Wall -g -o %<.o % && ./%<.o <CR>
 " compile and run valgrind on program
 
 map <leader>v :w<CR> :!gcc -Wall -g -o %<.o % && valgrind --leak-check=full --track-origins=yes ./%<.o<CR>
+
+" compile and run nasm assembly program
+map <leader>a :w<CR> :!nasm -f elf -l %<.lst % && g++ -o %< %<.o && ./%< <CR>
+
+
