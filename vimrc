@@ -302,6 +302,12 @@ map <A-q> :cclose<CR>
 map <S-f> :cnext<CR>
 map <S-t> :cprevious<CR>
 
+" keymapping for navigating files within current directory and subdirectories
+map <leader>r :args %:p:h/**<CR>
+map E :next<CR>
+map W :previous<CR>
+
+
 "key mapping for Gundo
 nnoremap <F4> :GundoToggle<CR>
 
