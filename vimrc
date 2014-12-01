@@ -258,10 +258,10 @@ else
     "set railscasts colorscheme when running vim in gnome terminal
     if $COLORTERM == 'gnome-terminal'
         set term=xterm-256color
-        colorscheme railscasts
+        colorscheme railscasts_best
     else
         set t_Co=256
-        colorscheme railscasts
+        colorscheme railscasts_best
     endif
 endif
 
@@ -280,7 +280,9 @@ inoremap <C-L> <C-O>:nohls<CR>
 nnoremap <leader>b :BufExplorer<cr>
 
 "map to CommandT TextMate style finder
-nnoremap <leader>t :CommandT<CR>
+nnoremap <D-t> :CommandT<CR>
+let g:CommandTAcceptSelectionMap = '<C-t>'
+let g:CommandTAcceptSelectionTabMap = '<CR>'
 
 "map Q to something useful
 noremap Q gq
@@ -449,7 +451,7 @@ map <leader>e :tab ball<cr>
 
 " add surrounding
 :nmap <c-h> ysiw
-set wildignore+=gem_link/**
+"set wildignore+=gem_link/**
 
 "noremap # g#
 map <leader>afs :AckFromSearch<cr>
@@ -465,7 +467,9 @@ map <leader>sn :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 
 " http://superuser.com/questions/246540/vim-delay-when-exiting-visual-mode
 
-set timeout ttimeoutlen=10
+set timeout ttimeoutlen=100
+
+set timeout timeoutlen=500
 
 " http://vim.wikia.com/wiki/Toggle_auto-indenting_for_code_paste
 nnoremap <F2> :set invpaste paste?<CR>
@@ -474,13 +478,41 @@ set showmode
 
 " compile and run c program
 
-map <F5> :w<CR> :!gcc -Wall -g -o %<.o % && ./%<.o <CR>
+map <F5> :w<CR> :!g++ -Wall -g -o %<.o % && ./%<.o <CR>
 
 " compile and run valgrind on program
 
-map <leader>v :w<CR> :!gcc -Wall -g -o %<.o % && valgrind --leak-check=full --track-origins=yes ./%<.o<CR>
+map <leader>v :w<CR> :!g++ -Wall -g -o %<.o % && valgrind --leak-check=full --track-origins=yes ./%<.o<CR>
 
 " compile and run nasm assembly program
 map <leader>a :w<CR> :!nasm -f elf -l %<.lst % && g++ -o %< %<.o && ./%< <CR>
 
 
+function! DoPrettyXML()
+  " save the filetype so we can restore it later
+  let l:origft = &ft
+  set ft=
+  " delete the xml header if it exists. This will
+  " permit us to surround the document with fake tags
+  " without creating invalid xml.
+  1s/<?xml .*?>//e
+  " insert fake tags around the entire document.
+  " This will permit us to pretty-format excerpts of
+  " XML that may contain multiple top-level elements.
+  0put ='<PrettyXML>'
+  $put ='</PrettyXML>'
+  silent %!xmllint --format -
+  " xmllint will insert an <?xml?> header. it's easy enough to delete
+  " if you don't want it.
+  " delete the fake tags
+  2d
+  $d
+  " restore the 'normal' indentation, which is one extra level
+  " too deep due to the extra tags we wrapped around the document.
+  silent %<
+  " back to home
+  1
+  " restore the filetype
+  exe "set ft=" . l:origft
+endfunction
+command! PrettyXML call DoPrettyXML()
