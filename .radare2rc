@@ -1,0 +1,24 @@
+e asm.syntax=intel
+
+ec offset rgb:666
+ec call yellow
+ec reg rgb:300
+ec num rgb:039
+ec comment green
+
+ec bin rgb:333
+ec ret rgb:333
+ec jmp rgb:333
+ec cjmp rgb:333
+ec math rgb:333
+ec cmp rgb:333
+ec push rgb:303
+ec pop rgb:303
+ec mov rgb:333
+ec b0x00 rgb:333
+ec b0x7f rgb:333
+ec b0xff rgb:333
+ec mov rgb:333
+ec other rgb:333
+ec input rgb:333
+ec btext rgb:333
