@@ -84,3 +84,11 @@ NO_COLOUR="\[\033[0m\]"
 
 PS1="@\u \w$YELLOW\$(parse_git_branch)$NO_COLOUR\$ "
 
+# asm
+function byte {
+  printf "$1" > /tmp/asm_file && nasm -felf /tmp/asm_file -l /dev/stdout
+}
+
+function byte64 {
+  printf "$1" > /tmp/asm_file && nasm -felf64 /tmp/asm_file -l /dev/stdout
+}
