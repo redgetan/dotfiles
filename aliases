@@ -92,3 +92,7 @@ function byte {
 function byte64 {
   printf "$1" > /tmp/asm_file && nasm -felf64 /tmp/asm_file -l /dev/stdout
 }
+
+function obi {
+  objdump -D -M intel "$1" | less
+}
