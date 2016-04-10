@@ -516,3 +516,12 @@ function! DoPrettyXML()
   exe "set ft=" . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
+
+" http://stackoverflow.com/a/1889646
+" will read a .vim file from the same directory as the file I'm editing,
+" regardless of what the current directory is.
+let b:thisdir=expand("%:p:h")
+let b:vim=b:thisdir."/.vim"
+if (filereadable(b:vim))
+  execute "source ".b:vim
+endif
